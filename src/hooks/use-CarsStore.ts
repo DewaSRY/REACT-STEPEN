@@ -10,9 +10,7 @@ export function useCarsStore() {
     () => bindActionCreators(carsAction, dispatch),
     [dispatch]
   );
-
   const { data, searchTerm } = useAppSelector((state) => state.cars);
-
   return {
     data,
     searchTerm,
