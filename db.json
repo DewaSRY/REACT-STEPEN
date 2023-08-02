@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "mayra"
+    },
+    {
+      "name": "Shakira",
+      "id": 2
+    },
+    {
+      "name": "Abdullah",
+      "id": 3
+    },
+    {
+      "name": "Hulda",
+      "id": 4
+    },
+    {
+      "name": "Tracey",
+      "id": 5
+    }
+  ],
+  "albums": [
+    {
+      "userId": 3,
+      "title": "Ergonomic Bronze Computer",
+      "id": 10
+    },
+    {
+      "userId": 3,
+      "title": "Refined Rubber Hat",
+      "id": 11
+    },
+    {
+      "userId": 3,
+      "title": "Awesome Frozen Computer",
+      "id": 12
+    },
+    {
+      "userId": 3,
+      "title": "Unbranded Frozen Towels",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "title": "Fantastic Bronze Soap",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Incredible Steel Soap",
+      "id": 15
+    },
+    {
+      "userId": 2,
+      "title": "Handmade Granite Bike",
+      "id": 16
+    },
+    {
+      "userId": 2,
+      "title": "Ergonomic Rubber Fish",
+      "id": 17
+    },
+    {
+      "userId": 2,
+      "title": "Electronic Wooden Bacon",
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "title": "Fantastic Rubber Chicken",
+      "id": 19
+    }
+  ],
+  "photos": [
+    {
+      "albumid": 14,
+      "url": "https://avatars.githubusercontent.com/u/24099924",
+      "id": 1
+    },
+    {
+      "albumid": 14,
+      "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1169.jpg",
+      "id": 2
+    },
+    {
+      "albumid": 14,
+      "url": "https://avatars.githubusercontent.com/u/92668154",
+      "id": 3
+    },
+    {
+      "albumid": 14,
+      "url": "https://avatars.githubusercontent.com/u/60463812",
+      "id": 4
+    },
+    {
+      "albumid": 14,
+      "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/412.jpg",
+      "id": 5
+    },
+    {
+      "albumid": 14,
+      "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/179.jpg",
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+.spinier-overlay {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .spinier-container {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(195, 195, 195, 0.6);
+        border-radius: 50%;
+        border-top-color: #636767;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    }
+}
+.animate-spin {
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    @keyframes spin {
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes spin {
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+}
+.button-container {
+    width: 200px;
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: "Open Sans Condensed";
+    font-weight: bolder;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    transition: all 0.4s;
+    &:hover {
+        filter: brightness(90%);
+    }
+    &:active {
+        transform: translateY(10%);
+        transform: scale(96%);
+    }
+    &.primary {
+        border-color: blue;
+        background-color: blue;
+        color: white;
+    }
+    &.secondary {
+        border-color: grey;
+        background-color: grey;
+        color: white;
+    }
+    &.warning {
+        border-color: green;
+        background-color: green;
+        color: white;
+    }
+    &.success {
+        border-color: yellow;
+        background-color: yellow;
+        color: white;
+    }
+    &.danger {
+        border-color: red;
+        background-color: red;
+        color: white;
+    }
+    &.rounded {
+        border-radius: 12px;
+    }
+    &.outline-primary {
+        background-color: white;
+        border-color: blue;
+        color: blue;
+    }
+    &.outline-secondary {
+        background-color: white;
+        border-color: grey;
+        color: grey;
+    }
+    &.outline-warning {
+        background-color: white;
+        border-color: green;
+        color: green;
+    }
+    &.outline-success {
+        background-color: white;
+        border-color: yellow;
+        color: yellow;
+    }
+    &.outline-danger {
+        background-color: white;
+        border-color: red;
+        color: red;
+    }
+}

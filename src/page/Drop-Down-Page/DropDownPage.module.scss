@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    min-width: 75%;
+    max-width: 1000px;
+    min-height: 400px;
+    justify-content: space-evenly;
+    outline: none;
+    cursor: pointer;
+    .select-bar {
+        position: relative;
+        .select-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid;
+            border-radius: 5px 0;
+            margin: 10px;
+            width: 200px;
+        }
+    }
+    .option-bar {
+        border: 1px solid;
+        border-radius: 5px 0;
+        // absolute top-full border rounded
+        .option-panel {
+            cursor: pointer;
+            transition: all 0.4s ease-out;
+            padding: 5px;
+            &:hover {
+                background-color: aliceblue;
+                border-radius: 12px;
+            }
+        }
+    }
+}
