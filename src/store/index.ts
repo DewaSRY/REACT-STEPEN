@@ -9,12 +9,9 @@ import {
 } from "./Store-Slice/Movie.Song.slice";
 import {
   carReducer,
-  addCar,
-  changeSearchTerm,
-  removeCar,
   formReducer,
-  changeCost,
-  changeName,
+  carsAction,
+  formAction,
   usersReducers,
 } from "./Store-Slice";
 import { reset } from "./Store-Action";
@@ -37,16 +34,6 @@ const store = configureStore({
 setupListeners(store.dispatch);
 export type AppDispatch = typeof store.dispatch;
 export type RootStore = ReturnType<typeof store.getState>;
-export {
-  store,
-  reset,
-  songAction,
-  movieAction,
-  changeSearchTerm,
-  addCar,
-  removeCar,
-  changeCost,
-  changeName,
-};
+export { store, reset, songAction, movieAction, carsAction, formAction };
 export * from "./thunk";
 export * from "./api";

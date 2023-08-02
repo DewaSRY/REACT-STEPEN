@@ -7,13 +7,12 @@ interface carData {
 type carsData = carData & {
   id: string;
 };
-const initialState = {
-  searchTerm: "",
-  data: [] as carsData[],
-};
 const carSlice = createSlice({
   name: "car",
-  initialState: initialState,
+  initialState: {
+    searchTerm: "",
+    data: [] as carsData[],
+  },
   reducers: {
     changeSearchTerm(state, action: PayloadAction<string>) {
       state.searchTerm = action.payload;
@@ -26,13 +25,13 @@ const carSlice = createSlice({
         id: nanoid(),
       });
     },
-    removeCar(state, action) {
-      const { id } = action.payload;
+    removeCar(state, action: PayloadAction<string>) {
+      const id = action.payload;
       state.data = state.data.filter((car) => {
         return car.id !== id;
       });
     },
   },
 });
-export const { changeSearchTerm, addCar, removeCar } = carSlice.actions;
+export const carsAction = carSlice.actions;
 export const carReducer = carSlice.reducer;

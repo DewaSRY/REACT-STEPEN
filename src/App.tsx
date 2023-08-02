@@ -7,6 +7,7 @@ import { SideBar, Route } from "./component";
 import { ModalPage } from "./page/Model-page";
 import { TablePage } from "./page/Table-page";
 import { MovieSongPage } from "./page/Movie-Song-page";
+import { CarsFormPage } from "./page/Car-Form-page";
 function App() {
   return (
     <div className={style.container}>
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path="/movieSong">
           <MovieSongPage />
+        </Route>
+        <Route path="/carForm">
+          <CarsFormPage />
         </Route>
       </div>
     </div>

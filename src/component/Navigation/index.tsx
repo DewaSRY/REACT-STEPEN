@@ -31,8 +31,8 @@ const links = [
     path: "/movieSong",
   },
   {
-    label: "car",
-    path: "/car",
+    label: "carForm",
+    path: "/carForm",
   },
   {
     label: "api",

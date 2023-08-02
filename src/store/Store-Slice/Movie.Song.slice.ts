@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { reset } from "../Store-Action";
-const movieState = [] as string[];
-const songState = [] as string[];
 
 const moviesSlice = createSlice({
   name: "movie",
-  initialState: movieState,
+  initialState: [] as string[],
   reducers: {
     addMovie(state, action) {
       state.push(action.payload);
@@ -21,7 +19,7 @@ const moviesSlice = createSlice({
 });
 const songsSlice = createSlice({
   name: "song",
-  initialState: songState,
+  initialState: [] as string[],
   reducers: {
     addSong(state, action) {
       state.push(action.payload);

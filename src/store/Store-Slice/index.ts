@@ -1,3 +1,3 @@
-export * from "./carSlice";
-export * from "./formSlice";
+export * from "./Car.Slice";
+export * from "./Form.Slice";
 export * from "./usersSlice";
