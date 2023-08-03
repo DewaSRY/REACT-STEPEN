@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "name": "Aida",
-      "id": 21
-    },
-    {
-      "name": "Sedrick",
-      "id": 22
-    },
-    {
       "name": "Leopold",
       "id": 23
     },
@@ -31,9 +23,41 @@
     {
       "name": "Luigi",
       "id": 30
+    },
+    {
+      "name": "Laila",
+      "id": 31
+    },
+    {
+      "name": "Felix",
+      "id": 32
+    },
+    {
+      "name": "Nestor",
+      "id": 33
+    },
+    {
+      "name": "Desiree",
+      "id": 34
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "userId": 34,
+      "title": "Practical Concrete Computer",
+      "id": 1
+    },
+    {
+      "userId": 23,
+      "title": "Incredible Cotton Sausages",
+      "id": 2
+    },
+    {
+      "userId": 24,
+      "title": "Oriental Rubber Tuna",
+      "id": 3
+    }
+  ],
   "photos": [
     {
       "albumid": 14,
@@ -64,6 +88,21 @@
       "albumid": 14,
       "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/179.jpg",
       "id": 6
+    },
+    {
+      "albumid": 3,
+      "url": "https://avatars.githubusercontent.com/u/68440859",
+      "id": 7
+    },
+    {
+      "albumid": 3,
+      "url": "https://avatars.githubusercontent.com/u/23149697",
+      "id": 8
+    },
+    {
+      "albumid": 3,
+      "url": "https://avatars.githubusercontent.com/u/11527085",
+      "id": 9
     }
   ]
 }

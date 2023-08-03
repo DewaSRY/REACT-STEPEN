@@ -154,7 +154,7 @@ function UsersList() {
   useEffect(() => {
     fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchUser]);
   let content;
   if (isLoading) {
     content = <Skeleton times={5} className="h-10 w-full p-3 m-3" />;

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { createRandomAlbums } from "../../data";
-const pause = (duration) => {
+const pause = (duration: number) => {
   return new Promise((resolve) => {
     setTimeout(resolve, duration);
   });
