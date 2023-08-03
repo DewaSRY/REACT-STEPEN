@@ -1,10 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, SerializedError } from "@reduxjs/toolkit";
 import { fetchUser, addUser, removeUser } from "../thunk";
-
+type users = {
+  name: string;
+  id: number;
+};
 interface initialState {
-  data: [];
+  data: users[];
   isLoading: boolean;
-  error: null | Error;
+  error: null | SerializedError;
 }
 const initialState: initialState = {
   data: [],
@@ -48,7 +51,7 @@ const usersSlice = createSlice({
       state.isLoading = requestStatus === "pending";
     });
     builder.addCase(removeUser.fulfilled, (state, action) => {
-      const { id } = action.meta.arg;
+      const id = action.meta.arg;
       state.isLoading = false;
       state.data = state.data.filter((user) => user.id !== id);
       console.log(id);

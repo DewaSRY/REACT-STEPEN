@@ -35,8 +35,8 @@ const links = [
     path: "/carForm",
   },
   {
-    label: "api",
-    path: "/api",
+    label: "apiAsync",
+    path: "/apiAsync",
   },
 ];
 type LinkProps = {

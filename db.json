@@ -1,78 +1,39 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "mayra"
+      "name": "Aida",
+      "id": 21
     },
     {
-      "name": "Shakira",
-      "id": 2
+      "name": "Sedrick",
+      "id": 22
     },
     {
-      "name": "Abdullah",
-      "id": 3
+      "name": "Leopold",
+      "id": 23
     },
     {
-      "name": "Hulda",
-      "id": 4
+      "name": "Bridget",
+      "id": 24
     },
     {
-      "name": "Tracey",
-      "id": 5
+      "name": "Jacky",
+      "id": 25
+    },
+    {
+      "name": "Johnson",
+      "id": 26
+    },
+    {
+      "name": "Bryana",
+      "id": 27
+    },
+    {
+      "name": "Luigi",
+      "id": 30
     }
   ],
-  "albums": [
-    {
-      "userId": 3,
-      "title": "Ergonomic Bronze Computer",
-      "id": 10
-    },
-    {
-      "userId": 3,
-      "title": "Refined Rubber Hat",
-      "id": 11
-    },
-    {
-      "userId": 3,
-      "title": "Awesome Frozen Computer",
-      "id": 12
-    },
-    {
-      "userId": 3,
-      "title": "Unbranded Frozen Towels",
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "title": "Fantastic Bronze Soap",
-      "id": 14
-    },
-    {
-      "userId": 1,
-      "title": "Incredible Steel Soap",
-      "id": 15
-    },
-    {
-      "userId": 2,
-      "title": "Handmade Granite Bike",
-      "id": 16
-    },
-    {
-      "userId": 2,
-      "title": "Ergonomic Rubber Fish",
-      "id": 17
-    },
-    {
-      "userId": 2,
-      "title": "Electronic Wooden Bacon",
-      "id": 18
-    },
-    {
-      "userId": 1,
-      "title": "Fantastic Rubber Chicken",
-      "id": 19
-    }
-  ],
+  "albums": [],
   "photos": [
     {
       "albumid": 14,
