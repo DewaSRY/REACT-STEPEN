@@ -1,15 +1,13 @@
 .accordion-container {
     display: flex;
     flex-direction: column;
-    width: 75%;
-    height: 100%;
     outline: none;
     cursor: pointer;
+    width: 70%;
     .accordion-items {
         display: flex;
         align-items: center;
         height: 30px;
-        width: 100%;
         border: 1px solid black;
         background-color: white;
         text-transform: uppercase;
@@ -37,7 +35,7 @@
             // margin-left: 10px;
             min-height: 70px;
             width: 100%;
-            background-color: whitesmoke;
+            background-color: white;
             border-radius: 0 0 12px 12px;
             display: flex;
             align-items: center;

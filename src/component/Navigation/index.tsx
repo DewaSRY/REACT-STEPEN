@@ -52,7 +52,7 @@ type RouteProps = {
 
 export function SideBar() {
   return (
-    <div className={style.container}>
+    <div className={style["link-container"]}>
       {links.map((link, idx) => {
         return (
           <Link key={idx} to={link.path}>

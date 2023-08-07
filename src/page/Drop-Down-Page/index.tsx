@@ -26,9 +26,9 @@ function DropDown({ options, onClickOption, value }: DropDown) {
     };
   });
   return (
-    <div ref={divElement} className={style["select-bar"]}>
+    <div ref={divElement} className={style["drop-down-select"]}>
       <Panel
-        className={style["select-panel"]}
+        className={style["drop-down-select-panel"]}
         onClick={() => setOpen(!isOpen)}
         placeholder="Search"
       >
@@ -36,10 +36,10 @@ function DropDown({ options, onClickOption, value }: DropDown) {
         <GoChevronDown />
       </Panel>
       {isOpen && (
-        <Panel className={style["option-bar"]}>
+        <Panel className={style["drop-down-select-bar"]}>
           {options.map((option) => (
             <div
-              className={style["option-panel"]}
+              className={style["drop-down-select-bar-options"]}
               key={option.value}
               onClick={() => onClickOption(option)}
             >
@@ -67,9 +67,8 @@ const options = [
 ];
 export function DropDownPage() {
   const [select, setSelect] = useState<Option | undefined>();
-
   return (
-    <div className={style.container}>
+    <div className={style["drop-down"]}>
       <DropDown
         options={options}
         onClickOption={(opt) => setSelect(opt)}

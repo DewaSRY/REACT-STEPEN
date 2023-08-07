@@ -26,8 +26,7 @@ function Modal({ children, actionBar }: Model) {
   );
   return ReactDOM.createPortal(<ModalDisplay />, modalPortal);
 }
-export function ModalPage() {
-  const [showModal, setShowModal] = useState(false);
+const ModelCard = ({ setShowModal }) => {
   const actionPart = (
     <Button
       onClick={() => setShowModal((prev) => !prev)}
@@ -37,20 +36,23 @@ export function ModalPage() {
       Close
     </Button>
   );
-  const modal = (
+  return (
     <Modal actionBar={actionPart}>
       <h1>Here is an important agreement for you to accept</h1>
     </Modal>
   );
+};
+export function ModalPage() {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div>
+    <div className={style["model-container"]}>
       <Button
         onClick={() => setShowModal((prev) => !prev)}
         buttonType="primary"
       >
         Open Model
       </Button>
-      {showModal && modal}
+      {showModal && <ModelCard setShowModal={setShowModal} />}
       <div className={style.para}>
         <p>
           The Sun is the star at the center of the Solar System. It is a nearly

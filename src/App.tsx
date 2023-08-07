@@ -11,7 +11,7 @@ import { CarsFormPage } from "./page/Car-Form-page";
 import { ApiAsyncPage } from "./page/Api-Async-page";
 function App() {
   return (
-    <div className={style.container}>
+    <div className={style["app-container"]}>
       <SideBar />
       <div className={style["items-container"]}>
         <Route path="/Accordion">
