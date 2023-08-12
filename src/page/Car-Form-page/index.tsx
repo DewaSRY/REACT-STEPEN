@@ -13,7 +13,7 @@ const CarValue: FC = () => {
 const CarSearch: FC = () => {
   const { changeSearchTerm, searchTerm } = useCarsStore();
   return (
-    <div className="list-header">
+    <div className={style["search"]}>
       <InputsField
         label="Search"
         value={searchTerm}
@@ -32,15 +32,14 @@ const CarList: FC = () => {
   );
   console.log("test", name);
   const renderedCars = filteredCars.map((car) => {
-    const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
     return (
-      <div key={car.id} className={`panel ${bold && "bold"}`}>
+      <div key={car.id} className={style["lists-panel"]}>
         <p>
           {car.name} - ${car.cost}
         </p>
-        <button className="button is-danger" onClick={() => removeCar(car.id)}>
+        <Button onClick={() => removeCar(car.id)} outline buttonType="warning">
           Delete
-        </button>
+        </Button>
       </div>
     );
   });

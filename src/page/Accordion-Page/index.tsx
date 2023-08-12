@@ -93,7 +93,7 @@ const AccordionPanel: FC<AccordionPanelProps> = ({
 };
 export function AccordionPage() {
   return (
-    <div>
+    <div className={style["accordion-page"]}>
       <Accordion items={items} />
     </div>
   );
