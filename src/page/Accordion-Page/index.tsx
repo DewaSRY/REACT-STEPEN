@@ -1,5 +1,5 @@
 import style from "./AccorDion.module.scss";
-import { useState } from "react";
+import { useState, FC } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 const items = [
   {
@@ -46,7 +46,10 @@ interface AccordionPanelProps {
   expanded: boolean;
   onExpended: () => void;
 }
-function Accordion({ items }: { items: AccordionItem[] }) {
+interface AccordionProps {
+  items: AccordionItem[];
+}
+const Accordion: FC<AccordionProps> = ({ items }) => {
   const [expandIndex, isExpandIndex] = useState<number>(-1);
   const setExpanded = (nextIndex: number) =>
     isExpandIndex((prevExpend) => {
@@ -57,7 +60,7 @@ function Accordion({ items }: { items: AccordionItem[] }) {
       }
     });
   return (
-    <>
+    <div className={style["accordion-container"]}>
       {items.map((item, idx) => {
         return (
           <AccordionPanel
@@ -68,25 +71,29 @@ function Accordion({ items }: { items: AccordionItem[] }) {
           />
         );
       })}
-    </>
+    </div>
   );
-}
-function AccordionPanel({ item, expanded, onExpended }: AccordionPanelProps) {
+};
+const AccordionPanel: FC<AccordionPanelProps> = ({
+  item,
+  expanded,
+  onExpended,
+}) => {
   return (
-    <div key={item.id}>
-      <div onClick={onExpended} className={style["accordion-items"]}>
+    <div key={item.id} className={style["panel"]}>
+      <div onClick={onExpended} className={style["panel-label"]}>
         {item.label}
         {expanded ? <GoChevronDown /> : <GoChevronLeft />}
       </div>
-      {expanded && (
-        <div className={style["accordion-items-content"]}>{item.content}</div>
-      )}
+      {expanded ? (
+        <div className={style["panel-content"]}>{item.content}</div>
+      ) : null}
     </div>
   );
-}
+};
 export function AccordionPage() {
   return (
-    <div className={style["accordion-container"]}>
+    <div>
       <Accordion items={items} />
     </div>
   );

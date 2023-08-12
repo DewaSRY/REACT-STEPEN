@@ -1,45 +1,80 @@
-.accordion-container {
+// .accordion-container {
+//     display: flex;
+//     flex-direction: column;
+//     outline: none;
+//     cursor: pointer;
+//     width: 70%;
+//     .accordion-items {
+//         display: flex;
+//         align-items: center;
+//         height: 30px;
+//         border: 1px solid black;
+//         background-color: white;
+//         text-transform: uppercase;
+//         margin-bottom: 2px;
+//         border-radius: 7px;
+//         display: flex;
+//         justify-content: space-between;
+//         &:hover {
+//             filter: brightness(95%);
+//         }
+//         &:focus {
+//             outline: none;
+//         }
+//         &::selection {
+//             outline: none;
+//         }
+//         svg {
+//             font-size: 30px;
+//             text-decoration: underline;
+//             &:active {
+//                 transform: scale(1.3);
+//             }
+//         }
+//         &-content {
+//             // margin-left: 10px;
+//             min-height: 70px;
+//             width: 100%;
+//             background-color: white;
+//             border-radius: 0 0 12px 12px;
+//             display: flex;
+//             align-items: center;
+//             flex-wrap: wrap;
+//         }
+//     }
+// }
+.panel {
     display: flex;
     flex-direction: column;
-    outline: none;
+    width: calc(70vw - 2rem);
+    margin-top: 0.2rem;
     cursor: pointer;
-    width: 70%;
-    .accordion-items {
-        display: flex;
-        align-items: center;
-        height: 30px;
-        border: 1px solid black;
+    &-label {
         background-color: white;
-        text-transform: uppercase;
-        margin-bottom: 2px;
-        border-radius: 7px;
         display: flex;
         justify-content: space-between;
+        border: solid 0.2px;
+        border-radius: 5px;
         &:hover {
             filter: brightness(95%);
         }
-        &:focus {
-            outline: none;
-        }
-        &::selection {
-            outline: none;
-        }
-        svg {
-            font-size: 30px;
-            text-decoration: underline;
-            &:active {
-                transform: scale(1.3);
-            }
-        }
-        &-content {
-            // margin-left: 10px;
-            min-height: 70px;
-            width: 100%;
-            background-color: white;
-            border-radius: 0 0 12px 12px;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
     }
+    &-content {
+        margin: 0.2rem;
+        padding: 0.6rem;
+        background-color: whitesmoke;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        letter-spacing: 0.2rem;
+        font-style: italic;
+    }
+}
+
+.accordion-container {
+    margin-top: auto;
+    padding: 2rem;
+    background-color: white;
+    height: max-content;
+    border: solid 1px black;
+    border-radius: 5px;
 }

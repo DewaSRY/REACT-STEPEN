@@ -1,6 +1,15 @@
-// import propTypes from "prop-types";
-import { GoSync } from "react-icons/go";
 import style from "./Button.module.scss";
+import { ButtonHTMLAttributes, FC } from "react";
+import { GoSync } from "react-icons/go";
+
+export const Spinier: FC = () => {
+  return (
+    <div className={style["spinier-overlay"]}>
+      <div className={style["spinier-container"]} />
+    </div>
+  );
+};
+
 export type ButtonTypes =
   | "primary"
   | "secondary"
@@ -13,16 +22,15 @@ type ButtonProps = {
   rounded?: boolean;
   loading?: boolean;
   children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-export function Button({
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+export const Button: FC<ButtonProps> = ({
   buttonType = "primary",
   outline = false,
   rounded = false,
   loading = false,
   children,
   ...rest
-}: ButtonProps) {
+}) => {
   const buttonClass = [
     style["button-container"],
     style[buttonType],
@@ -31,27 +39,7 @@ export function Button({
   ].join(" ");
   return (
     <button className={buttonClass} {...rest}>
-      {/* <GoSync /> */}
       {loading ? <GoSync className={style["animate-spin"]} /> : children}
     </button>
   );
-}
-
-export function Spinier() {
-  return (
-    <div className={style["spinier-overlay"]}>
-      <div className={style["spinier-container"]} />
-    </div>
-  );
-}
-// export function Button({}) {
-//   // const classes = className(
-
-//   // );
-
-// //   return (
-// //     <button {...rest} disabled={loading} className={classes}>
-// //       {loading ? <GoSync className="animate-spin" /> : children}
-// //     </button>
-// //   );
-// }
+};

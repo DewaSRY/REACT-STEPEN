@@ -1,11 +1,18 @@
 .button-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr) 1fr;
-    flex-wrap: wrap;
-    margin-top: -10%;
-    // justify-content: space-between;
-    .button-row {
+    width: calc(70vw - 3rem);
+    padding: 2rem;
+    margin: 2rem;
+    border-bottom: solid 0.1rem;
+    border-left: solid 0.1rem;
+    display: flex;
+    justify-content: center;
+    .button-table {
         display: grid;
-        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: 1fr;
+        flex-wrap: wrap;
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 }
