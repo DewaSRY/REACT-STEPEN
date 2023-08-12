@@ -1,4 +1,5 @@
 import style from "./ButtonPage.module.scss";
+import { FC } from "react";
 import { Button, ButtonTypes } from "../../component";
 const ButtonType: ButtonTypes[] = [
   "primary",
@@ -7,7 +8,7 @@ const ButtonType: ButtonTypes[] = [
   "success",
   "warning",
 ];
-export function ButtonPage() {
+export const ButtonPage: FC = () => {
   return (
     <div className={style["button-container"]}>
       <div className={style["button-table"]}>
@@ -42,4 +43,4 @@ export function ButtonPage() {
       </div>
     </div>
   );
-}
+};

@@ -1,12 +1,11 @@
 import style from "./ModelPage.module.scss";
 import { Button } from "../../component";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import ReactDOM from "react-dom";
 interface Model {
   children: React.ReactNode;
-  actionBar: React.ReactNode;
 }
-function Modal({ children, actionBar }: Model) {
+const Modal: FC<Model> = ({ children }) => {
   const modalPortal = document.getElementById("modal") as HTMLElement;
   useEffect(() => {
     document.body.classList.add(style["overflow-hidden"]);
@@ -14,88 +13,47 @@ function Modal({ children, actionBar }: Model) {
       document.body.classList.remove(style["overflow-hidden"]);
     };
   }, []);
-  const ModalDisplay = () => (
-    <div className={style.container}>
-      <div className={style["model-info"]}>
-        <div>
-          {children}
-          <div>{actionBar}</div>
-        </div>
-      </div>
+  const ModalDisplay: FC = () => (
+    <div className={style["model-container"]}>
+      <div>{children}</div>
     </div>
   );
   return ReactDOM.createPortal(<ModalDisplay />, modalPortal);
+};
+interface ModelCardProps {
+  modelHandler: () => void;
 }
-const ModelCard = ({ setShowModal }) => {
-  const actionPart = (
-    <Button
-      onClick={() => setShowModal((prev) => !prev)}
-      buttonType="primary"
-      rounded
-    >
-      Close
-    </Button>
-  );
+const ModelCard: FC<ModelCardProps> = ({ modelHandler }) => {
   return (
-    <Modal actionBar={actionPart}>
-      <h1>Here is an important agreement for you to accept</h1>
+    <Modal>
+      <div className={style["model-info"]}>
+        <h1>Here is an important agreement for you to accept</h1>
+        <Button onClick={modelHandler} buttonType="primary" rounded>
+          Close
+        </Button>
+      </div>
     </Modal>
   );
 };
+
 export function ModalPage() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className={style["model-container"]}>
+    <div className={style["container"]}>
       <Button
         onClick={() => setShowModal((prev) => !prev)}
         buttonType="primary"
       >
         Open Model
       </Button>
-      {showModal && <ModelCard setShowModal={setShowModal} />}
-      <div className={style.para}>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
-        <p>
-          The Sun is the star at the center of the Solar System. It is a nearly
-          perfect ball of hot plasma, heated to incandescence by nuclear fusion
-          reactions in its core. The Sun radiates this energy mainly as light,
-          ultraviolet, and infrared radiation, and is the most important source
-          of energy for life on Earth.
-        </p>
+      {showModal ? (
+        <ModelCard modelHandler={() => setShowModal((prev) => !prev)} />
+      ) : null}
+      <div className={style["useful-info"]}>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam
+        veritatis cupiditate commodi, accusantium ut aliquid soluta. Dolorum
+        deleniti assumenda dignissimos vero quo quod aperiam porro. Dolores
+        saepe eos iste nam culpa voluptate totam non.
       </div>
     </div>
   );

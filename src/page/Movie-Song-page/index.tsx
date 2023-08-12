@@ -1,81 +1,74 @@
-import "./styles.css";
+// import "./styles.css";
+import style from "./MovieSongs.module.scss";
+import { FC } from "react";
 import { createRandomSong, createRandomMovie } from "../../data";
 import { useMovieSong } from "../../hooks";
-export function MoviePlaylist() {
-  const { movies, removeMovie, addMovie } = useMovieSong();
-
-  const renderedMovies = movies.map((movie) => {
-    return (
-      <li key={movie}>
-        {movie}
-        <button onClick={() => removeMovie(movie)} className="button is-danger">
-          X
-        </button>
-      </li>
-    );
-  });
-
-  return (
-    <div className="content">
-      <div className="table-header">
-        <h3 className="subtitle is-3">Movie Playlist</h3>
-        <div className="buttons">
-          <button
-            onClick={() => addMovie(createRandomMovie())}
-            className="button is-link"
-          >
-            + Add Movie to Playlist
-          </button>
-        </div>
-      </div>
-      <ul>{renderedMovies}</ul>
-    </div>
-  );
+import { Button } from "../../component";
+interface DisplayPlayListProps {
+  label: string;
+  lists: string[];
+  removeBtn: (arg: string) => void;
+  clickButton: () => void;
 }
-
-export function SongPlaylist() {
-  const { songs, removeSong, addSong } = useMovieSong();
-
-  const renderedSongs = songs.map((song) => {
+export const DisplayPlayList: FC<DisplayPlayListProps> = ({
+  label,
+  lists,
+  clickButton,
+  removeBtn,
+}) => {
+  const renderedSongs = lists.map((song) => {
     return (
       <li key={song}>
         {song}
-        <button onClick={() => removeSong(song)} className="button is-danger">
+        <Button onClick={() => removeBtn(song)} buttonType="warning" outline>
           X
-        </button>
+        </Button>
       </li>
     );
   });
-
   return (
-    <div className="content">
-      <div className="table-header">
-        <h3 className="subtitle is-3">Song Playlist</h3>
-        <div className="buttons">
-          <button
-            onClick={() => addSong(createRandomSong())}
-            className="button is-link"
-          >
-            + Add Song to Playlist
-          </button>
-        </div>
+    <div className={style["content"]}>
+      <div className={style["table-header"]}>
+        <h3 className="subtitle is-3">{label} Playlist</h3>
+        <Button onClick={() => clickButton()}>+ Add {label} to Playlist</Button>
       </div>
       <ul>{renderedSongs}</ul>
     </div>
   );
-}
+};
 
 export function MovieSongPage() {
-  const { resetAll } = useMovieSong();
+  const {
+    resetAll,
+    movies,
+    removeMovie,
+    addMovie,
+    songs,
+    removeSong,
+    addSong,
+  } = useMovieSong();
+
   return (
-    <div className="container is-fluid">
-      <button onClick={() => resetAll()} className="button is-danger">
+    <div className={style["container-movie-song"]}>
+      <Button onClick={() => resetAll()} buttonType="danger" outline rounded>
         Reset Both Playlists
-      </button>
+      </Button>
+
       <hr />
-      <MoviePlaylist />
+      <DisplayPlayList
+        label="Movie"
+        lists={movies}
+        removeBtn={removeMovie}
+        clickButton={() => addMovie(createRandomMovie())}
+      />
       <hr />
-      <SongPlaylist />
+      <DisplayPlayList
+        label="Songs"
+        lists={songs}
+        removeBtn={removeSong}
+        clickButton={() => addSong(createRandomSong())}
+      />
+      <hr />
     </div>
   );
 }

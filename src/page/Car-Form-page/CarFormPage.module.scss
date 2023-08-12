@@ -1,0 +1,74 @@
+.input-field {
+    width: 20rem;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    & label {
+        cursor: pointer;
+        font-weight: 150;
+        font-size: 1.5rem;
+        font-style: oblique;
+    }
+    & input {
+        border: none;
+        padding-left: 1rem;
+    }
+}
+.car-form {
+    margin: 1rem;
+    padding: 1rem;
+    width: max-content;
+    border: solid 1px;
+    border-top: none;
+    border-right: none;
+    border-radius: 7px;
+    overflow: hidden;
+    background-color: rgba(153, 205, 50, 0.415);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+    & h4 {
+        position: relative;
+        font-size: 2rem;
+        text-align: right;
+        padding-right: 1rem;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            right: -10%;
+            content: "";
+            width: 80rem;
+            height: 1px;
+            border: solid 1px black;
+        }
+    }
+}
+.car-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &-details {
+        flex-grow: 2;
+        margin-top: 1rem;
+        & h3 {
+            text-shadow: 3px 3px rgba(0, 0, 0, 0.081);
+            position: relative;
+            &::after {
+                position: absolute;
+                content: "";
+                bottom: 0;
+                left: 0;
+                padding: 1px;
+                border: solid 1px black;
+                width: 70%;
+                max-width: 50rem;
+            }
+        }
+    }
+}
+.car-lists {
+    height: 12rem;
+    max-width: 50rem;
+    width: 100%;
+    overflow-y: scroll;
+    border-bottom: solid 1px black;
+    margin-bottom: 0.5rem;
+}

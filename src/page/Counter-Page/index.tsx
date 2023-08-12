@@ -61,10 +61,20 @@ export function CounterPage() {
     <div className={style["counter-container"]}>
       <h1 className="text-lg">Count is {count}</h1>
       <div className={style["button-container"]}>
-        <Button onClick={() => setCount(1)} outline rounded>
+        <Button
+          onClick={() => setCount(1)}
+          buttonType={"success"}
+          outline
+          rounded
+        >
           Increment
         </Button>
-        <Button onClick={() => setCount(-1)} outline rounded>
+        <Button
+          onClick={() => setCount(-1)}
+          buttonType={"danger"}
+          outline
+          rounded
+        >
           Decrement
         </Button>
       </div>
@@ -74,6 +84,7 @@ export function CounterPage() {
           onChange={(e) => setInputCount(Number(e.target.value))}
           className="p-3 shadow bg-gray-300 border-gray-300 w-full"
           type="text"
+          placeholder="insert much value to counter ?"
           value={inputValue || ""}
         />
         <Button outline>Add It</Button>

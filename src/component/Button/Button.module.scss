@@ -40,10 +40,11 @@
     }
 }
 .button-container {
-    width: calc(8rem + 0.12vw);
-    height: calc(4em + 0.12vh);
+    width: max-content;
+    height: max-content;
+    padding: 0.8rem 2rem;
     line-height: calc(0.5rem + 0.7vh);
-    font-size: calc(0.5rem + 0.07vh);
+    font-size: calc(0.8rem + 0.07vh);
     text-transform: uppercase;
     font-family: "Open Sans Condensed";
     font-weight: bolder;

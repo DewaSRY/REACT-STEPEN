@@ -1,38 +1,36 @@
+import style from "./CarFormPage.module.scss";
+import { FC, InputHTMLAttributes, useEffect, FormEventHandler } from "react";
 import { useFormStore, useCarsStore } from "../../hooks";
-
-function CarValue() {
+import { Button } from "../../component";
+const CarValue: FC = () => {
   const { data, searchTerm } = useCarsStore();
   const totalCost = data
     .filter((car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()))
     .reduce((acc, car) => acc + car.cost, 0);
 
   return <div className="car-value">Total Cost: ${totalCost}</div>;
-}
-function CarSearch() {
+};
+const CarSearch: FC = () => {
   const { changeSearchTerm, searchTerm } = useCarsStore();
-
   return (
     <div className="list-header">
-      <h3 className="title is-3">My Cars</h3>
-      <div className="search field is-horizontal">
-        <label className="label">Search</label>
-        <input
-          className="input"
-          value={searchTerm}
-          onChange={(e) => changeSearchTerm(e.target.value)}
-        />
-      </div>
+      <InputsField
+        label="Search"
+        value={searchTerm}
+        updates={(val) => {
+          changeSearchTerm(String(val));
+        }}
+      />
     </div>
   );
-}
-
-function CarList() {
+};
+const CarList: FC = () => {
   const { data, searchTerm, removeCar } = useCarsStore();
   const { name } = useFormStore();
-
   const filteredCars = data.filter((car) =>
     car.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  console.log("test", name);
   const renderedCars = filteredCars.map((car) => {
     const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
     return (
@@ -46,61 +44,89 @@ function CarList() {
       </div>
     );
   });
-
-  return (
-    <div className="car-list">
-      {renderedCars}
-      <hr />
-    </div>
-  );
-}
-
-function CarForm() {
+  return <div className={style["car-lists"]}>{renderedCars}</div>;
+};
+const CarForm: FC = () => {
   const { name, cost, changeName, changeCost } = useFormStore();
   const { addCar } = useCarsStore();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
+    if (!name || !cost) return;
     addCar({ name, cost });
   };
+  useEffect(() => {
+    console.log("rerender");
+    console.log(name, cost);
+  }, [name, cost]);
 
   return (
-    <div className="car-form panel">
-      <h4 className="subtitle is-3">Add Car</h4>
+    <div className={style["car-form"]}>
+      <h4>Add Car</h4>
       <form onSubmit={handleSubmit}>
         <div className="field-group">
-          <div className="field">
-            <label className="label">Name</label>
-            <input
-              className="input is-expanded"
-              value={name}
-              onChange={(e) => changeName(e.target.value)}
-            />
-          </div>
-
-          <div className="field">
-            <label className="label">Cost</label>
-            <input
-              className="input is-expanded"
-              value={cost || ""}
-              onChange={(e) => changeCost(parseInt(e.target.value || "0"))}
-              type="number"
-            />
-          </div>
+          <InputsField
+            label="Name"
+            value={name}
+            type="text"
+            updates={(val) => {
+              changeName(val);
+            }}
+          />
+          <InputsField
+            label="Cost"
+            value={cost}
+            type="number"
+            updates={(val) => {
+              changeCost(Number(val || "0"));
+            }}
+          />
         </div>
-        <div className="field">
-          <button className="button is-link">Submit</button>
-        </div>
+        <Button outline rounded>
+          Submit
+        </Button>
       </form>
     </div>
   );
-}
-export function CarsFormPage() {
+};
+type InputsFieldProps = {
+  label: string;
+  value: string | number;
+  updates: (arg: string | number) => void;
+} & InputHTMLAttributes<HTMLInputElement>;
+const InputsField: FC<InputsFieldProps> = ({
+  label,
+  value,
+  updates,
+  ...rest
+}) => {
   return (
-    <div>
-      <CarForm />
-      <CarSearch />
-      <CarList />
-      <CarValue />
+    <div className={style["input-field"]}>
+      <label className="label" htmlFor={label}>
+        {label}
+      </label>
+      <input
+        id={label}
+        value={value || ""}
+        onChange={(e) => {
+          updates(e.target.value);
+        }}
+        placeholder={`${label}...`}
+        {...rest}
+      />
     </div>
   );
-}
+};
+
+export const CarsFormPage: FC = () => {
+  return (
+    <div className={style["car-page"]}>
+      <CarForm />
+      <div className={style["car-page-details"]}>
+        <h3>My Cars</h3>
+        <CarSearch />
+        <CarList />
+        <CarValue />
+      </div>
+    </div>
+  );
+};

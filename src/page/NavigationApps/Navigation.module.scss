@@ -18,6 +18,9 @@
 }
 .app-element {
     flex-grow: 2;
+    scroll-behavior: smooth;
+    height: 100vh;
+    overflow-y: scroll;
 }
 .links {
     text-decoration: none;
