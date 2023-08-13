@@ -58,38 +58,6 @@ const links = [
   },
 ];
 function App() {
-  return (
-    <NavigationApps links={links} />
-    // <div className={style["app-container"]}>
-    //   <SideBar links={links} />
-    //   <Route path="/Accordion">
-    //     <AccordionPage />
-    //   </Route>
-    //   <Route path="/">
-    //     <DropDownPage />
-    //   </Route>
-    //   <Route path="/Buttons">
-    //     <ButtonPage />
-    //   </Route>
-    //   <Route path="/modal">
-    //     <ModalPage />
-    //   </Route>
-    //   <Route path="/count">
-    //     <CounterPage />
-    //   </Route>
-    //   <Route path="/table">
-    //     <TablePage />
-    //   </Route>
-    //   <Route path="/movieSong">
-    //     <MovieSongPage />
-    //   </Route>
-    //   <Route path="/carForm">
-    //     <CarsFormPage />
-    //   </Route>
-    //   <Route path="/apiAsync">
-    //     <ApiAsyncPage />
-    //   </Route>
-    // </div>
-  );
+  return <NavigationApps links={links} />;
 }
 export default App;
