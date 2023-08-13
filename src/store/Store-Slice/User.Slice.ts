@@ -2,8 +2,7 @@ import { createSlice, SerializedError } from "@reduxjs/toolkit";
 import { fetchUser, addUser, removeUser } from "../thunk";
 type users = {
   name: string;
-  id: number;
-  userId: string;
+  id: string;
 };
 interface initialState {
   data: users[];

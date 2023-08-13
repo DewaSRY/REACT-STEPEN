@@ -1,7 +1,7 @@
 import style from "./ApiAsync.module.scss";
 import { Button } from "../../component";
 import { GoTrash, GoChevronDown, GoArrowLeft } from "react-icons/go";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import { useUserStore } from "../../hooks/use-User.store";
 import {
   useFetchAlbumsQuery,
@@ -160,7 +160,6 @@ function UsersList() {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
-
   let content: JSX.Element;
   if (isLoading) {
     content = <Skeleton times={5} className="h-10 w-full p-3 m-3" />;
@@ -206,6 +205,7 @@ function UsersListItem({ user }) {
     </ExpandAblePanel>
   );
 }
+
 export function ApiAsyncPage() {
   return (
     <div>
@@ -213,3 +213,9 @@ export function ApiAsyncPage() {
     </div>
   );
 }
+
+interface ComponentProps {}
+
+export const UserBarrNavigation: FC<ComponentProps> = (): JSX.Element => {
+  return <div>index UserBarrNavigation</div>;
+};
