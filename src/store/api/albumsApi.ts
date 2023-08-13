@@ -5,6 +5,7 @@ const pause = (duration: number) => {
     setTimeout(resolve, duration);
   });
 };
+
 export const albumsApi = createApi({
   reducerPath: "albums",
   baseQuery: fetchBaseQuery({
@@ -18,7 +19,8 @@ export const albumsApi = createApi({
     return {
       removeAlbum: builder.mutation({
         invalidatesTags: (result, error, album) => {
-          console.log(album);
+          console.log("inside album", album);
+          console.log("inside result", result);
           return [{ type: "album", id: album.id }];
         },
         query: (album) => {
@@ -30,6 +32,9 @@ export const albumsApi = createApi({
       }),
       addAlbum: builder.mutation({
         invalidatesTags: (result, error, user) => {
+          console.log("inside user", user);
+          console.log("inside result", result);
+          console.log("inside error", error);
           return [{ type: "userAlbums", id: user.id }];
         },
         query: (user) => {
