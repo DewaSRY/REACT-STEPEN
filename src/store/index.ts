@@ -32,6 +32,8 @@ const store = configureStore({
   },
 });
 setupListeners(store.dispatch);
+//TEMP
+// window.store = store;
 export type AppDispatch = typeof store.dispatch;
 export type RootStore = ReturnType<typeof store.getState>;
 export { store, reset, songAction, movieAction, carsAction, formAction };

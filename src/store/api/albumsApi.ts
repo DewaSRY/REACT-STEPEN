@@ -18,6 +18,7 @@ type Album = {
 const albumName = createRandomAlbums();
 export const albumsApi = createApi({
   reducerPath: "albums",
+  tagTypes: ["album", "userAlbums"],
   baseQuery: fetchBaseQuery({
     baseUrl: " http://localhost:3001",
     fetchFn: async (...args) => {
@@ -34,7 +35,8 @@ export const albumsApi = createApi({
             method: "DELETE",
           };
         },
-        invalidatesTags: (result, error, album) => {
+        invalidatesTags: (_result, _error, album) => {
+          console.log("test while query", album);
           return [{ type: "album", id: album.id }];
         },
       }),
@@ -51,7 +53,7 @@ export const albumsApi = createApi({
             },
           };
         },
-        invalidatesTags: (result, error, user) => {
+        invalidatesTags: (_result, _error, user) => {
           return [{ type: "userAlbums", id: user.id }];
         },
       }),
@@ -65,13 +67,16 @@ export const albumsApi = createApi({
             method: "GET",
           };
         },
-        providesTags: (result, error, user) => {
-          const tags = result.map((album) => {
-            return { type: "album", id: album.id };
-          });
-          tags.push({ type: "userAlbums", id: user.id });
-          return tags;
-        },
+        providesTags: (result, _error, user) =>
+          result
+            ? [
+                ...result.map((album) => ({
+                  type: "album" as const,
+                  id: album.id,
+                })),
+                { type: "userAlbums", id: user.id },
+              ]
+            : ["userAlbums"],
       }),
     };
   },

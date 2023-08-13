@@ -12,6 +12,7 @@ type Photo = {
 };
 export const photoApi = createApi({
   reducerPath: "photos",
+  tagTypes: ["photo", "AlbumPhoto"],
   baseQuery: fetchBaseQuery({
     baseUrl: " http://localhost:3001/",
   }),
@@ -27,13 +28,16 @@ export const photoApi = createApi({
             method: "GET",
           };
         },
-        providesTags: (result, error, album) => {
-          const tags = result.map((photo) => {
-            return { type: "Photo", id: photo.id };
-          });
-          tags.push({ type: "AlbumPhoto", id: album.id });
-          return tags;
-        },
+        providesTags: (result, _error, album) =>
+          result
+            ? [
+                ...result.map((album) => ({
+                  type: "photo" as const,
+                  id: album.id,
+                })),
+                { type: "AlbumPhoto", id: album.id },
+              ]
+            : ["AlbumPhoto"],
       }),
       addPhotos: builder.mutation<Photo[], Album>({
         query: (album) => {
@@ -48,9 +52,9 @@ export const photoApi = createApi({
             },
           };
         },
-        invalidatesTags: (result, error, album) => {
-          return [{ type: "AlbumPhoto", id: album.id }];
-        },
+        invalidatesTags: (_result, _error, album) => [
+          { type: "AlbumPhoto", id: album.id },
+        ],
       }),
       removePhotos: builder.mutation<void, Photo>({
         query: (photo) => {
@@ -59,8 +63,8 @@ export const photoApi = createApi({
             url: `/photos/${photo.id}`,
           };
         },
-        invalidatesTags: (result, error, photo) => {
-          return [{ type: "Photo", id: photo.id }];
+        invalidatesTags: (_result, _error, photo) => {
+          return [{ type: "photo", id: photo.id }];
         },
       }),
     };
