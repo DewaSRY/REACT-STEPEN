@@ -5,7 +5,17 @@ const pause = (duration: number) => {
     setTimeout(resolve, duration);
   });
 };
-
+type Users = {
+  name: string;
+  id: number;
+};
+type Album = {
+  title: string;
+  userId: string;
+  id: number;
+  albumId: string;
+};
+const albumName = createRandomAlbums();
 export const albumsApi = createApi({
   reducerPath: "albums",
   baseQuery: fetchBaseQuery({
@@ -17,45 +27,35 @@ export const albumsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      removeAlbum: builder.mutation({
-        invalidatesTags: (result, error, album) => {
-          console.log("inside album", album);
-          console.log("inside result", result);
-          return [{ type: "album", id: album.id }];
-        },
+      removeAlbum: builder.mutation<void, Album>({
         query: (album) => {
           return {
             url: `/albums/${album.id}`,
             method: "DELETE",
           };
         },
-      }),
-      addAlbum: builder.mutation({
-        invalidatesTags: (result, error, user) => {
-          console.log("inside user", user);
-          console.log("inside result", result);
-          console.log("inside error", error);
-          return [{ type: "userAlbums", id: user.id }];
+        invalidatesTags: (result, error, album) => {
+          return [{ type: "album", id: album.id }];
         },
+      }),
+      addAlbum: builder.mutation<Album[], Users>({
         query: (user) => {
+          const albumId = user.id + "-" + Math.round(Math.random() * 100);
           return {
             url: "/albums",
             method: "POST",
             body: {
               userId: user.id,
-              title: createRandomAlbums(),
+              title: albumName,
+              id: albumId,
             },
           };
         },
-      }),
-      fetchAlbums: builder.query({
-        providesTags: (result, error, user) => {
-          const tags = result.map((album) => {
-            return { type: "album", id: album.id };
-          });
-          tags.push({ type: "userAlbums", id: user.id });
-          return tags;
+        invalidatesTags: (result, error, user) => {
+          return [{ type: "userAlbums", id: user.id }];
         },
+      }),
+      fetchAlbums: builder.query<Album[], Users>({
         query: (user) => {
           return {
             url: "/albums",
@@ -64,6 +64,13 @@ export const albumsApi = createApi({
             },
             method: "GET",
           };
+        },
+        providesTags: (result, error, user) => {
+          const tags = result.map((album) => {
+            return { type: "album", id: album.id };
+          });
+          tags.push({ type: "userAlbums", id: user.id });
+          return tags;
         },
       }),
     };

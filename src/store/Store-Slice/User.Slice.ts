@@ -3,6 +3,7 @@ import { fetchUser, addUser, removeUser } from "../thunk";
 type users = {
   name: string;
   id: number;
+  userId: string;
 };
 interface initialState {
   data: users[];
@@ -54,7 +55,6 @@ const usersSlice = createSlice({
       const id = action.meta.arg;
       state.isLoading = false;
       state.data = state.data.filter((user) => user.id !== id);
-      console.log(id);
     });
     builder.addCase(removeUser.rejected, (state, action) => {
       state.isLoading = false;

@@ -30,7 +30,7 @@ function Skeleton({ times, className }: SkeletonProps) {
 }
 export function PhotoListItem({ data }) {
   const [removePhoto, response] = useRemovePhotosMutation();
-  const handleRemovePhoto = () => removePhoto(data);
+
   return (
     <div className={style["photo-container"]}>
       {data.map((photo) => (
@@ -38,7 +38,7 @@ export function PhotoListItem({ data }) {
           <img src={photo.url} alt={"photoOf"} />
           <Button
             loading={response.isLoading}
-            onClick={handleRemovePhoto}
+            onClick={() => removePhoto(photo)}
             outline
             rounded
           >

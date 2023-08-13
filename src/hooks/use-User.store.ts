@@ -21,21 +21,3 @@ export function useUserStore() {
     isLoading,
   };
 }
-
-// type arr= string| undefined
-// type thunk=()=>Promise<any>
-// export function useThunk(thunk:thunk) {
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [error, setIsError] = useState(null);
-//   const runThunk = useCallback(
-//     (arg:arr) => {
-//       setIsLoading(true);
-//       thunk(arg)
-//         .unwrap()
-//         .catch((error) => setIsError(error))
-//         .finally(() => setIsLoading(false));
-//     },
-//     [ thunk]
-//   );
-//   return [runThunk, isLoading, error];
-// }
