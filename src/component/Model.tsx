@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 interface Model {
   children: React.ReactNode;
 }
+
 const Modal: FC<Model> = ({ children }) => {
   const modalPortal = document.getElementById("modal") as HTMLElement;
   useEffect(() => {
@@ -38,6 +39,16 @@ const ModelCard: FC<ModelCardProps> = ({ modelHandler }) => {
 
 export default function ModalPage() {
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const model = document.createElement("div");
+    model.setAttribute("id", "modal");
+    document.body.appendChild(model);
+    () => {
+      const modelremoveOne = document.getElementById("modal");
+      document.body.removeChild(modelremoveOne);
+    };
+  }, []);
   return (
     <div className={style["container"]}>
       <Button

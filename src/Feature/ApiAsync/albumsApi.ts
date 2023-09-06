@@ -16,7 +16,7 @@ type Album = {
   albumId: string;
 };
 const albumName = createRandomAlbums();
-export const albumsApi = createApi({
+const albumsApi = createApi({
   reducerPath: "albums",
   tagTypes: ["album", "userAlbums"],
   baseQuery: fetchBaseQuery({
@@ -81,9 +81,5 @@ export const albumsApi = createApi({
     };
   },
 });
-export const {
-  useFetchAlbumsQuery,
-  useAddAlbumMutation,
-  useRemoveAlbumMutation,
-} = albumsApi;
-// export default albumsApi;
+
+export default albumsApi;

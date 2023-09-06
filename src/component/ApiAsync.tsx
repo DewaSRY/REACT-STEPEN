@@ -1,16 +1,18 @@
 import style from "./ApiAsync.module.scss";
 import { Button } from "./Button";
 import { GoTrash, GoChevronDown, GoArrowLeft } from "react-icons/go";
-import { useEffect, useState } from "react";
-import { useUserStore } from "../hooks/use-User.store";
+import { useEffect, useState, ReactElement } from "react";
+
 import {
-  useFetchAlbumsQuery,
-  useAddAlbumMutation,
-  useRemoveAlbumMutation,
-  useFetchPhotosQuery,
-  useAddPhotosMutation,
-  useRemovePhotosMutation,
-} from "../store";
+  useSelectors,
+  useReducerDispatch,
+  photoQuery,
+  albumsQuery,
+} from "../Feature/store";
+const { useAddAlbumMutation, useFetchAlbumsQuery, useRemoveAlbumMutation } =
+  albumsQuery;
+const { useFetchPhotosQuery, useAddPhotosMutation, useRemovePhotosMutation } =
+  photoQuery;
 interface SkeletonProps {
   times: number;
   className?: string;
@@ -55,7 +57,7 @@ export function PhotoList({ album }) {
   const handleAddPhoto = () => {
     addPhoto(album);
   };
-  let content;
+  let content: ReactElement;
   if (isFetching) {
     content = <Skeleton times={2} />;
   } else if (error) {
@@ -156,7 +158,8 @@ function ExpandAblePanel({ header, children }) {
 }
 
 function UsersList() {
-  const { data, addUser, fetchUser, error, isLoading } = useUserStore();
+  const { data, error, isLoading } = useSelectors((s) => s.users);
+  const { addUser, fetchUser } = useReducerDispatch();
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
@@ -189,7 +192,8 @@ function UsersList() {
 }
 
 function UsersListItem({ user }) {
-  const { removeUser, error } = useUserStore();
+  const { error } = useSelectors((s) => s.users);
+  const { removeUser } = useReducerDispatch();
   const header = (
     <>
       <Button onClick={() => removeUser(user.id)} outline rounded>

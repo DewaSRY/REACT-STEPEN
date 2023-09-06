@@ -10,7 +10,7 @@ type Photo = {
   albumId: string;
   id: string;
 };
-export const photoApi = createApi({
+const photoApi = createApi({
   reducerPath: "photos",
   tagTypes: ["photo", "AlbumPhoto"],
   baseQuery: fetchBaseQuery({
@@ -70,10 +70,5 @@ export const photoApi = createApi({
     };
   },
 });
-export const {
-  useAddPhotosMutation,
-  useFetchPhotosQuery,
-  useRemovePhotosMutation,
-} = photoApi;
 
-// export default photoApi;
+export default photoApi;

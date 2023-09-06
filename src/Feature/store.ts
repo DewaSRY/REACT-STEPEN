@@ -8,9 +8,10 @@ import SongReducer, { songAction } from "./MovieSong/SongReducer";
 import { reset } from "./MovieSong/CreateActtion";
 import userReducer from "./ApiAsync/userReducer";
 import { UserThunkAction } from "./ApiAsync/userThunk";
-import { albumsApi } from "./ApiAsync/albumsApi";
-import { photoApi } from "./ApiAsync/photoAPI";
+import albumsApi from "./ApiAsync/albumsApi";
+import photoApi from "./ApiAsync/photoAPI";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { useMemo } from "react";
 export const store = configureStore({
   reducer: {
     songs: SongReducer,
@@ -35,18 +36,19 @@ export const useSelectors: TypedUseSelectorHook<RootStore> = useSelector;
 export function useReducerDispatch() {
   const useAppDispatch: () => AppDispatch = useDispatch;
   const dispatch = useAppDispatch();
-  //   const formDispatch = useMemo(
-  //     () => bindActionCreators(formAction, dispatch),
-  //     [dispatch]
-  //   );
+  const actionThunk = useMemo(
+    () => bindActionCreators(UserThunkAction, dispatch),
+    [dispatch]
+  );
   const movieSongRest = () => dispatch(reset());
   return {
     ...bindActionCreators(carAction, dispatch),
     ...bindActionCreators(formAction, dispatch),
     ...bindActionCreators(movieAction, dispatch),
     ...bindActionCreators(songAction, dispatch),
-    ...bindActionCreators(UserThunkAction, dispatch),
+    ...actionThunk,
     movieSongRest,
   };
 }
+export { albumsApi as albumsQuery, photoApi as photoQuery };
 export default store;

@@ -1,8 +1,8 @@
 // import "./styles.css";
-import style from "./MovieSongs.module.scss";
+import style from "./MovieSong.module.scss";
 import { FC } from "react";
 import { createRandomSong, createRandomMovie } from "../data";
-import { useMovieSong } from "../hooks";
+import { useSelectors, useReducerDispatch } from "../Feature/store";
 import { Button } from "./Button";
 interface DisplayPlayListProps {
   label: string;
@@ -38,19 +38,18 @@ export const DisplayPlayList: FC<DisplayPlayListProps> = ({
 };
 
 export default function MovieSongPage() {
-  const {
-    resetAll,
-    movies,
-    removeMovie,
-    addMovie,
-    songs,
-    removeSong,
-    addSong,
-  } = useMovieSong();
+  const { songs, movies } = useSelectors((s) => s);
+  const { removeMovie, removeSong, addMovie, addSong, movieSongRest } =
+    useReducerDispatch();
 
   return (
     <div className={style["container-movie-song"]}>
-      <Button onClick={() => resetAll()} buttonType="danger" outline rounded>
+      <Button
+        onClick={() => movieSongRest()}
+        buttonType="danger"
+        outline
+        rounded
+      >
         Reset Both Playlists
       </Button>
 

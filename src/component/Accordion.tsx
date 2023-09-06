@@ -10,7 +10,6 @@ const Items = new Array(4).fill(null).map(() => {
     content: faker.lorem.paragraph(),
   };
 });
-console.log(Items);
 interface AccordionPanelProps {
   item: {
     id: number;
