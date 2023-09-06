@@ -24,6 +24,11 @@
       "userId": "Alessandra-37",
       "title": "Recycled Rubber Pizza",
       "id": "Alessandra-37-56"
+    },
+    {
+      "userId": "Cecile-83",
+      "title": "Small Wooden Gloves",
+      "id": "Cecile-83-34"
     }
   ],
   "photos": [
@@ -41,6 +46,36 @@
       "albumId": "Alessandra-37-56",
       "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/136.jpg",
       "id": "Alessandra-37-56-44"
+    },
+    {
+      "albumId": "Alessandra-37-76",
+      "url": "https://avatars.githubusercontent.com/u/75100460",
+      "id": "Alessandra-37-76-31"
+    },
+    {
+      "albumId": "Alessandra-37-76",
+      "url": "https://avatars.githubusercontent.com/u/90979931",
+      "id": "Alessandra-37-76-35"
+    },
+    {
+      "albumId": "Alessandra-37-56",
+      "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/744.jpg",
+      "id": "Alessandra-37-56-35"
+    },
+    {
+      "albumId": "Cecile-83-87",
+      "url": "https://avatars.githubusercontent.com/u/60729804",
+      "id": "Cecile-83-87-81"
+    },
+    {
+      "albumId": "Cecile-83-87",
+      "url": "https://avatars.githubusercontent.com/u/93867230",
+      "id": "Cecile-83-87-64"
+    },
+    {
+      "albumId": "Cecile-83-87",
+      "url": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/962.jpg",
+      "id": "Cecile-83-87-54"
     }
   ]
 }

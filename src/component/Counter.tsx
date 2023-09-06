@@ -1,6 +1,6 @@
-import style from "./CounterPage.module.scss";
+import style from "./Counter.module.scss";
 import { useReducer } from "react";
-import { Button } from "../../component/Button";
+import { Button } from "./Button";
 // const createAction = (type, payload) => ({ type, payload });
 enum reducerType {
   addValueCount = "addValueCount",
@@ -37,7 +37,7 @@ const reducer = (state: IState, action: ReducerAction) => {
       return state;
   }
 };
-export function CounterPage() {
+export default function CounterPage() {
   const [{ count, inputValue }, dispatch] = useReducer(reducer, {
     count: 0,
     inputValue: 0,

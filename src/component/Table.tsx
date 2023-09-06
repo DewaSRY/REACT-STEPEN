@@ -1,4 +1,4 @@
-import style from "./TablePage.module.scss";
+import style from "./Table.module.scss";
 import { useState, FC } from "react";
 import { GoArrowDown, GoArrowUp } from "react-icons/go";
 type Data = {
@@ -25,7 +25,6 @@ const Table: FC<TableProps> = ({ data, config }) => {
       </th>
     );
   });
-
   const renderedRows = data.map((rowData, key) => {
     const renderedCells = config.map((column) => {
       return (
@@ -50,13 +49,8 @@ const Table: FC<TableProps> = ({ data, config }) => {
   );
 };
 type ShortOrderType = "asc" | "desc" | null;
-interface useShortDataTableProps {
-  (data: Data[], config: Config[]): {
-    updateData: Data[];
-    updatedConfig: Config[];
-  };
-}
-const useShortDataTable: useShortDataTableProps = (data, config) => {
+
+const useShortDataTable = (data: Data[], config: Config[]) => {
   const [sortOrder, setSortOrder] = useState<ShortOrderType>(null);
   const [sortBy, setSortBy] = useState<string | null>(null);
   const handleClick = (label: string) => {
@@ -143,6 +137,7 @@ const getIcons: getIconsProps = (label, sortBy, sortOrder) => {
     );
   }
 };
+
 const data = [
   { name: "Orange", color: "orange", score: 5 },
   { name: "Apple", color: "red", score: 3 },
@@ -177,18 +172,13 @@ const config: Config[] = [
     sortValue: (fruit) => fruit.score ** 2,
   },
 ];
-export function TablePage() {
+export default function TablePage() {
   const { updateData, updatedConfig } = useShortDataTable(data, config);
-
   return (
     <div className={style["table-container"]}>
       <div className={style["table-page"]}>
         <h2>Sorted Table</h2>
         <Table data={updateData} config={updatedConfig} />
-      </div>
-      <div className={style["table-page"]}>
-        <h2>Table</h2>
-        <Table data={data} config={config} />
       </div>
     </div>
   );

@@ -1,41 +1,45 @@
-import style from "./CarFormPage.module.scss";
+import style from "./CarForm.module.scss";
 import { FC, InputHTMLAttributes, useEffect, FormEventHandler } from "react";
-import { useFormStore, useCarsStore } from "../../hooks";
-import { Button } from "../../component";
+
+import { useSelectors, useReducerDispatch } from "../Feature/store";
+import { Button } from "./Button";
 const CarValue: FC = () => {
-  const { data, searchTerm } = useCarsStore();
+  const { data, searchTerms } = useSelectors((state) => state.cars);
   const totalCost = data
-    .filter((car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    .reduce((acc, car) => acc + car.cost, 0);
+    .filter((car) => car.name.toLowerCase().includes(searchTerms.toLowerCase()))
+    .reduce((acc, car) => acc + car.price, 0);
 
   return <div className="car-value">Total Cost: ${totalCost}</div>;
 };
 const CarSearch: FC = () => {
-  const { changeSearchTerm, searchTerm } = useCarsStore();
+  const { changeSearchTerms } = useReducerDispatch();
+  const { searchTerms } = useSelectors((s) => s.cars);
   return (
     <div className={style["search"]}>
       <InputsField
         label="Search"
-        value={searchTerm}
+        value={searchTerms}
         updates={(val) => {
-          changeSearchTerm(String(val));
+          changeSearchTerms(String(val));
         }}
       />
     </div>
   );
 };
 const CarList: FC = () => {
-  const { data, searchTerm, removeCar } = useCarsStore();
-  const { name } = useFormStore();
+  const { data, searchTerms } = useSelectors((s) => s.cars);
+  const { name } = useSelectors((s) => s.form);
+  const { removeCar } = useReducerDispatch();
+
   const filteredCars = data.filter((car) =>
-    car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    car.name.toLowerCase().includes(searchTerms.toLowerCase())
   );
   console.log("test", name);
   const renderedCars = filteredCars.map((car) => {
     return (
       <div key={car.id} className={style["lists-panel"]}>
         <p>
-          {car.name} - ${car.cost}
+          {car.name} - ${car.price}
         </p>
         <Button onClick={() => removeCar(car.id)} outline buttonType="warning">
           Delete
@@ -46,12 +50,12 @@ const CarList: FC = () => {
   return <div className={style["car-lists"]}>{renderedCars}</div>;
 };
 const CarForm: FC = () => {
-  const { name, cost, changeName, changeCost } = useFormStore();
-  const { addCar } = useCarsStore();
+  const { name, cost } = useSelectors((s) => s.form);
+  const { changeCost, changeName, addCar } = useReducerDispatch();
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (!name || !cost) return;
-    addCar({ name, cost });
+    addCar({ name, price: cost });
   };
   useEffect(() => {
     console.log("rerender");
@@ -116,7 +120,7 @@ const InputsField: FC<InputsFieldProps> = ({
   );
 };
 
-export const CarsFormPage: FC = () => {
+const CarsFormPage: FC = () => {
   return (
     <div className={style["car-page"]}>
       <CarForm />
@@ -129,3 +133,5 @@ export const CarsFormPage: FC = () => {
     </div>
   );
 };
+
+export default CarsFormPage;

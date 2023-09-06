@@ -1,5 +1,4 @@
-import style from "./DropDownPage.module.scss";
-import { Panel } from "../../component";
+import style from "./DropDown.module.scss";
 import { useState, useRef, useEffect, FC } from "react";
 import { GoChevronDown } from "react-icons/go";
 
@@ -41,16 +40,16 @@ const DropDown: FC<DropDown> = ({ options, onClickOption, value }) => {
   });
   return (
     <div ref={divElement} className={style["drop-down"]}>
-      <Panel
+      <div
         className={style["drop-down-select"]}
         onClick={() => setOpen(!isOpen)}
         placeholder="Search"
       >
         {value?.label || "Select"}
         <GoChevronDown />
-      </Panel>
+      </div>
       {isOpen && (
-        <Panel className={style["drop-down-options"]}>
+        <div className={style["drop-down-options"]}>
           {options.map((option) => (
             <div
               className={style["drop-down-option"]}
@@ -60,13 +59,13 @@ const DropDown: FC<DropDown> = ({ options, onClickOption, value }) => {
               {option.label}
             </div>
           ))}
-        </Panel>
+        </div>
       )}
     </div>
   );
 };
 
-export function DropDownPage() {
+export default function DropDownPage() {
   const [select, setSelect] = useState<Option | undefined>();
   return (
     <div className={style["drop-down-container"]}>

@@ -1,9 +1,9 @@
 // import "./styles.css";
 import style from "./MovieSongs.module.scss";
 import { FC } from "react";
-import { createRandomSong, createRandomMovie } from "../../data";
-import { useMovieSong } from "../../hooks";
-import { Button } from "../../component";
+import { createRandomSong, createRandomMovie } from "../data";
+import { useMovieSong } from "../hooks";
+import { Button } from "./Button";
 interface DisplayPlayListProps {
   label: string;
   lists: string[];
@@ -37,7 +37,7 @@ export const DisplayPlayList: FC<DisplayPlayListProps> = ({
   );
 };
 
-export function MovieSongPage() {
+export default function MovieSongPage() {
   const {
     resetAll,
     movies,

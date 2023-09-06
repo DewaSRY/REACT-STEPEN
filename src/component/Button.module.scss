@@ -75,8 +75,8 @@
         background-color: green;
     }
     &.success {
-        border-color: rgb(244, 244, 5);
-        background-color: rgb(221, 248, 17);
+        border-color: #f8de22;
+        background-color: #f8de22;
     }
     &.danger {
         border-color: red;
@@ -102,12 +102,22 @@
     }
     &.outline-success {
         background-color: white;
-        border-color: yellow;
-        color: yellow;
+        border-color: #f8de22;
+        color: #f8de22;
     }
     &.outline-danger {
         background-color: white;
         border-color: red;
         color: red;
     }
+}
+.buttons {
+    width: calc(50rem + 1.5vw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    margin: 2rem;
+    border-bottom: solid 0.1rem;
+    border-left: solid 0.1rem;
+    background-color: rgba(17, 160, 74, 0.198);
+    border-radius: 5px;
 }

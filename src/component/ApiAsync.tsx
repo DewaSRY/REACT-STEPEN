@@ -1,8 +1,8 @@
 import style from "./ApiAsync.module.scss";
-import { Button } from "../../component";
+import { Button } from "./Button";
 import { GoTrash, GoChevronDown, GoArrowLeft } from "react-icons/go";
-import { useEffect, useState, FC } from "react";
-import { useUserStore } from "../../hooks/use-User.store";
+import { useEffect, useState } from "react";
+import { useUserStore } from "../hooks/use-User.store";
 import {
   useFetchAlbumsQuery,
   useAddAlbumMutation,
@@ -10,7 +10,7 @@ import {
   useFetchPhotosQuery,
   useAddPhotosMutation,
   useRemovePhotosMutation,
-} from "../../store";
+} from "../store";
 interface SkeletonProps {
   times: number;
   className?: string;
@@ -206,7 +206,7 @@ function UsersListItem({ user }) {
   );
 }
 
-export function ApiAsyncPage() {
+export default function ApiAsyncPage() {
   return (
     <div>
       <UsersList />
@@ -214,8 +214,8 @@ export function ApiAsyncPage() {
   );
 }
 
-interface ComponentProps {}
+// interface ComponentProps {}
 
-export const UserBarrNavigation: FC<ComponentProps> = (): JSX.Element => {
-  return <div>index UserBarrNavigation</div>;
-};
+// export const UserBarrNavigation: FC<ComponentProps> = (): JSX.Element => {
+//   return <div>index UserBarrNavigation</div>;
+// };

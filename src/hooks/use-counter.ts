@@ -5,10 +5,10 @@ export function useCount(initialCount: number) {
   useEffect(() => {
     console.log(count);
   }, [count]);
-  const handleCountIncrist = () => setCount((prevNum) => prevNum + 1);
+  const handleCountIncrust = () => setCount((prevNum) => prevNum + 1);
   return {
     count,
     setCount,
-    handleCountIncrist,
+    handleCountIncrist: handleCountIncrust,
   };
 }

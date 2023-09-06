@@ -1,7 +1,6 @@
 import style from "./Button.module.scss";
 import { ButtonHTMLAttributes, FC } from "react";
 import { GoSync } from "react-icons/go";
-
 export const Spinier: FC = () => {
   return (
     <div className={style["spinier-overlay"]}>
@@ -9,7 +8,6 @@ export const Spinier: FC = () => {
     </div>
   );
 };
-
 export type ButtonTypes =
   | "primary"
   | "secondary"
@@ -43,3 +41,38 @@ export const Button: FC<ButtonProps> = ({
     </button>
   );
 };
+
+const ButtonType: ButtonTypes[] = [
+  "primary",
+  "secondary",
+  "danger",
+  "success",
+  "warning",
+];
+const ButtonPage: FC = () => {
+  return (
+    <div className={style["buttons"]}>
+      {ButtonType.map((type, id) => (
+        <Button key={id} buttonType={type}>
+          {type.toLocaleUpperCase()}
+        </Button>
+      ))}
+      {ButtonType.map((type, id) => (
+        <Button key={id} buttonType={type} outline>
+          {type.toLocaleUpperCase()}
+        </Button>
+      ))}
+      {ButtonType.map((type, id) => (
+        <Button key={id} buttonType={type} rounded>
+          {type.toLocaleUpperCase()}
+        </Button>
+      ))}
+      {ButtonType.map((type, id) => (
+        <Button key={id} buttonType={type} outline rounded>
+          {type.toLocaleUpperCase()}
+        </Button>
+      ))}
+    </div>
+  );
+};
+export default ButtonPage;

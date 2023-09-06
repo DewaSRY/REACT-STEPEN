@@ -1,5 +1,5 @@
-import style from "./ModelPage.module.scss";
-import { Button } from "../../component";
+import style from "./Model.module.scss";
+import { Button } from "./Button";
 import { useState, useEffect, FC } from "react";
 import ReactDOM from "react-dom";
 interface Model {
@@ -36,7 +36,7 @@ const ModelCard: FC<ModelCardProps> = ({ modelHandler }) => {
   );
 };
 
-export function ModalPage() {
+export default function ModalPage() {
   const [showModal, setShowModal] = useState(false);
   return (
     <div className={style["container"]}>

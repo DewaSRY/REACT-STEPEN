@@ -47,7 +47,6 @@
     display: flex;
     flex-direction: column;
     width: calc(70vw - 2rem);
-    margin-top: 0.2rem;
     cursor: pointer;
     &-label {
         background-color: white;
@@ -71,10 +70,8 @@
 }
 
 .accordion-container {
-    margin-top: auto;
     padding: 2rem;
     background-color: white;
-    height: max-content;
     border: solid 1px black;
     border-radius: 5px;
 }
